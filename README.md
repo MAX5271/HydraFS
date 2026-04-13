@@ -46,8 +46,8 @@ The worker utilizes an asynchronous "Switchboard" logic to identify incoming pac
 
 ---
 
-## 🚦 Quick Start
+## Quick Start
 
-* The client part was ran on a Laptop with linux mint operating system. The required steps are provided in the Readme file present in the client folder. The proto folder present int the root folder of the repo should be placed in the client as well as the worker folders before running the program.
+* The client part was ran on a Laptop with Linux Mint operating system. The required steps are provided in the README file present in the client folder. The proto folder present in the root folder of the repo should be placed in the client as well as the worker folders before running the program.
 
-* The worker part was ran on Raspberry pi 4 with Raspberry pi lite operating system. The required steps are provided in the Readme file present in the worker folder. The proto folder present int the root folder of the repo should be placed in the client as well as the worker folders before running the program.
+* The worker part was ran on Raspberry Pi 4 with Raspberry Pi Lite operating system. The required steps are provided in the README file present in the worker folder. The proto folder present in the root folder of the repo should be placed in the client as well as the worker folders before running the program.
