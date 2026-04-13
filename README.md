@@ -11,7 +11,7 @@ The project is organized as a monorepo containing both the transmitter and recei
 * **[Client (The Slicer)](./client)**: Runs on the host machine (Linux Mint). Handles file slicing, health checks, and reliable transmission.
 * **[Worker (The Vault)](./worker)**: Runs on the storage node (Raspberry Pi). Manages asynchronous packet handling, disk I/O, and data reassembly.
 * **[Proto](./proto)**: The shared source-of-truth for Protocol Buffer definitions.
-* 
+  
 ```mermaid
 graph TD
 subgraph "Laptop (Linux Mint)"
