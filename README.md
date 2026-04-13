@@ -11,7 +11,27 @@ The project is organized as a monorepo containing both the transmitter and recei
 * **[Client (The Slicer)](./client)**: Runs on the host machine (Linux Mint). Handles file slicing, health checks, and reliable transmission.
 * **[Worker (The Vault)](./worker)**: Runs on the storage node (Raspberry Pi). Manages asynchronous packet handling, disk I/O, and data reassembly.
 * **[Proto](./proto)**: The shared source-of-truth for Protocol Buffer definitions.
+* 
+```mermaid
+graph TD
+subgraph "Laptop (Linux Mint)"
+A[Original File] --> B[Slicer Engine]
+B -->|1MB Shards| C[Protobuf Serialization]
+C --> D[Boost.Asio TCP Client]
+end
 
+D -->|Network| E[Raspberry Pi 4]
+
+subgraph "Storage Node (Vault)"
+E --> F[Boost.Asio TCP Server]
+F --> G[Switchboard Logic]
+G --> H[Protobuf Deserialization]
+H --> I[1TB External HDD]
+end
+
+style A fill:#f9f,stroke:#333,stroke-width:2px
+style I fill:#00f,stroke:#fff,stroke-width:2px,color:#fff
+```
 ---
 
 ## 📸 System in Action
@@ -36,26 +56,7 @@ The worker utilizes an asynchronous "Switchboard" logic to identify incoming pac
 ![Worker Logs](./docs/screenshots/Hydra_Worker.png)
 
 ---
-```mermaid
-graph TD
-subgraph "Laptop (Linux Mint)"
-A[Original File] --> B[Slicer Engine]
-B -->|1MB Shards| C[Protobuf Serialization]
-C --> D[Boost.Asio TCP Client]
-end
 
-D -->|Network| E[Raspberry Pi 4]
-
-subgraph "Storage Node (Vault)"
-E --> F[Boost.Asio TCP Server]
-F --> G[Switchboard Logic]
-G --> H[Protobuf Deserialization]
-H --> I[1TB External HDD]
-end
-
-style A fill:#f9f,stroke:#333,stroke-width:2px
-style I fill:#00f,stroke:#fff,stroke-width:2px,color:#fff
-```
 
 ## 🛠️ Tech Stack & Key Concepts
 
