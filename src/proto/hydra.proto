@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+// This puts our generated C++ code into the 'hydrafs' namespace
+package hydrafs;
+
+// This is the "Shipping Manifest" for a piece of a file
+message FileShard {
+    string filename = 1;      // e.g., "vacation_photo.jpg"
+    int32 shard_id = 2;       // e.g., 1, 2, 3... (for reassembly)
+    int32 total_shards = 3;   // e.g., 5 total pieces
+    bytes data = 4;           // The actual raw binary 1s and 0s
+}
