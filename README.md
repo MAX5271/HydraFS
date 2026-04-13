@@ -36,6 +36,25 @@ The worker utilizes an asynchronous "Switchboard" logic to identify incoming pac
 ![Worker Logs](./docs/screenshots/Hydra_Worker.png)
 
 ---
+graph TD
+    subgraph "Laptop (Linux Mint)"
+        A[Original File] --> B[Slicer Engine]
+        B -->|1MB Shards| C[Protobuf Serialization]
+        C --> D[Boost.Asio TCP Client]
+    end
+
+    D -->|Network| E[Raspberry Pi 4]
+
+    subgraph "Storage Node (Vault)"
+        E --> F[Boost.Asio TCP Server]
+        F --> G[Switchboard Logic]
+        G --> H[Protobuf Deserialization]
+        H --> I[1TB External HDD]
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style I fill:#00f,stroke:#fff,stroke-width:2px,color:#fff
+
 
 ## 🛠️ Tech Stack & Key Concepts
 
